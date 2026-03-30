@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siddharth Parmar | Technical Leader</title>
+  <meta name="description" content="Premium personal portfolio website for Siddharth Parmar - Technical Leader, Delivery Manager, and Software Engineer." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0b1730;
+      --panel: rgba(255, 255, 255, 0.08);
+      --panel-border: rgba(255, 255, 255, 0.12);
+      --text: #f8fafc;
+      --muted: #b6c2d2;
+      --primary: #7c3aed;
+      --secondary: #22d3ee;
+      --accent: #60a5fa;
+      --glow: 0 0 80px rgba(124, 58, 237, 0.35);
+      --radius: 24px;
+      --shadow: 0 30px 60px rgba(0, 0, 0, 0.28);
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(34, 211, 238, 0.12), transparent 25%),
+        radial-gradient(circle at 80% 10%, rgba(124, 58, 237, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.10), transparent 24%),
+        linear-gradient(135deg, #040814 0%, #07111f 35%, #0a1430 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .noise {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.06;
+      background-image: radial-gradient(#fff 0.5px, transparent 0.5px);
+      background-size: 10px 10px;
+      mix-blend-mode: soft-light;
+    }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 10, 20, 0.45);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.85), rgba(34,211,238,0.85));
+      box-shadow: var(--glow);
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 20px 40px rgba(34, 211, 238, 0.18), 0 20px 48px rgba(124, 58, 237, 0.22);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      position: relative;
+      padding: 84px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #d7e2ef;
+      font-size: 0.92rem;
+      margin-bottom: 20px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 16px #22c55e;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 6vw, 5.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff, #c4b5fd 38%, #67e8f9 72%, #bfdbfe 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 700px;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 22px 0 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .stat-card, .glass-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+    }
+
+    .stat-card {
+      padding: 20px;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 580px;
+    }
+
+    .orb, .orb-2 {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(28px);
+      opacity: 0.9;
+    }
+
+    .orb {
+      width: 230px;
+      height: 230px;
+      background: rgba(124, 58, 237, 0.35);
+      top: 5%;
+      right: 10%;
+    }
+
+    .orb-2 {
+      width: 180px;
+      height: 180px;
+      background: rgba(34, 211, 238, 0.25);
+      bottom: 12%;
+      left: 2%;
+    }
+
+    .profile-card {
+      position: absolute;
+      inset: 55px 25px 20px 40px;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .profile-image {
+      height: 310px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05)),
+        url('https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=1200&q=80') center/cover;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+
+    .profile-meta {
+      padding-top: 18px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      color: #e7eef8;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    section {
+      padding: 46px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 26px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.2vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 640px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card, .project-card, .contact-card {
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .feature-card:hover, .project-card:hover, .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(103, 232, 249, 0.26);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.32), 0 0 0 1px rgba(103,232,249,0.06) inset;
+    }
+
+    .feature-card::before, .project-card::before, .contact-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -55% auto;
+      width: 180px;
+      height: 180px;
+      background: radial-gradient(circle, rgba(34,211,238,0.18), transparent 60%);
+      pointer-events: none;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(124,58,237,0.32), rgba(34,211,238,0.22));
+      border: 1px solid rgba(255,255,255,0.12);
+      font-size: 1.2rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3, .project-card h3, .contact-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+    }
+
+    .feature-card p, .project-card p, .contact-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .project-card .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+    }
+
+    .tag {
+      font-size: 0.82rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #d8e3ef;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 18px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .linkish {
+      color: #7dd3fc;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .skills-wrap {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #ecf4ff;
+      font-weight: 500;
+      transition: 0.25s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(34,211,238,0.14);
+      border-color: rgba(103, 232, 249, 0.28);
+    }
+
+    .cta {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta h3 {
+      margin: 0 0 12px;
+      font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+      letter-spacing: -0.03em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .contact-item small {
+      display: block;
+      color: #97a6ba;
+      margin-bottom: 6px;
+    }
+
+    .contact-item a, .contact-item span {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      word-break: break-word;
+    }
+
+    footer {
+      padding: 28px 0 44px;
+      color: #95a5ba;
+      font-size: 0.94rem;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.08s; }
+    .delay-2 { animation-delay: 0.16s; }
+    .delay-3 { animation-delay: 0.24s; }
+    .delay-4 { animation-delay: 0.32s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid, .cta, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual {
+        min-height: 520px;
+      }
+      .profile-card {
+        inset: 25px 0 0;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+      .nav-links {
+        gap: 16px;
+      }
+      .hero {
+        padding-top: 48px;
+      }
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      h1 {
+        line-height: 1.02;
+      }
+      .profile-image {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">SP</div>
+        <div>Siddharth Parmar</div>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-secondary" href="#contact">Let’s Connect</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow fade-up"><span class="dot"></span> Technical Leader • Delivery Manager • Software Engineer</div>
+        <h1 class="fade-up delay-1">
+          Building <span class="gradient-text">high-impact products</span><br>
+          with strong engineering and sharper execution.
+        </h1>
+        <p class="fade-up delay-2">
+          I help teams turn complex ideas into scalable systems — across embedded engineering, enterprise software, cloud integration, and end-to-end delivery. From architecture to execution, I focus on building things that work beautifully and deliver real business value.
+        </p>
+        <div class="hero-actions fade-up delay-3">
+          <a class="btn btn-primary" href="#work">Explore My Work</a>
+          <a class="btn btn-secondary" href="#contact">Book a Conversation</a>
+        </div>
+        <div class="stats fade-up delay-4">
+          <div class="stat-card">
+            <strong>10+</strong>
+            <span>Years of experience across software, embedded systems, leadership, and execution.</span>
+          </div>
+          <div class="stat-card">
+            <strong>80+</strong>
+            <span>Stakeholders aligned across large-scale project delivery and cross-functional programs.</span>
+          </div>
+          <div class="stat-card">
+            <strong>End-to-End</strong>
+            <span>From solution design and planning to release execution and team coordination.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up delay-2">
+        <div class="orb"></div>
+        <div class="orb-2"></div>
+        <div class="glass-card profile-card">
+          <div class="profile-image"></div>
+          <div class="profile-meta">
+            <div>
+              <h3 style="margin:0 0 8px;font-size:1.5rem;">Siddharth Parmar</h3>
+              <p style="margin:0;color:var(--muted);line-height:1.7;">Technical Lead with strong roots in C++, C#, .NET, embedded systems, Azure-backed architecture, and project delivery leadership.</p>
+            </div>
+            <div class="pill-row">
+              <div class="pill">C++</div>
+              <div class="pill">C# / .NET</div>
+              <div class="pill">Embedded Systems</div>
+              <div class="pill">Azure</div>
+              <div class="pill">Project Delivery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Not just code. Direction.</h2>
+        </div>
+        <p>
+          I work where technical depth meets ownership. My focus has been building reliable systems, modernizing platforms, guiding teams, and keeping execution moving with clarity and accountability.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="glass-card feature-card">
+          <div class="icon">⚙️</div>
+          <h3>Engineering Depth</h3>
+          <p>Strong hands-on background in C++, VC++, C#, .NET, Windows applications, and embedded software for real-world systems.</p>
+        </div>
+        <div class="glass-card feature-card">
+          <div class="icon">☁️</div>
+          <h3>Scalable Architecture</h3>
+          <p>Experience building and supporting cloud-connected systems with Azure, API integrations, structured delivery, and modernization thinking.</p>
+        </div>
+        <div class="glass-card feature-card">
+          <div class="icon">👥</div>
+          <h3>Leadership & Execution</h3>
+          <p>Led teams, aligned stakeholders, handled project execution, and kept delivery on track without losing sight of technical quality.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Selected work</h2>
+        </div>
+        <p>
+          A few examples of the kind of systems, products, and delivery ownership I bring to the table.
+        </p>
+      </div>
+      <div class="grid-3">
+        <div class="glass-card project-card">
+          <h3>Pricing Engine & Business Platform</h3>
+          <p>Led execution across enterprise pricing workflows, integrations, release alignment, business coordination, and technical problem-solving in a complex product ecosystem.</p>
+          <div class="tag-row">
+            <span class="tag">Enterprise Systems</span>
+            <span class="tag">Delivery Ownership</span>
+            <span class="tag">Stakeholder Management</span>
+          </div>
+          <div class="project-footer">
+            <span style="color:#d7e5f5;">High-scale business impact</span>
+            <a class="linkish" href="#contact">Discuss Project</a>
+          </div>
+        </div>
+        <div class="glass-card project-card">
+          <h3>Embedded & Mission-Critical Systems</h3>
+          <p>Worked on embedded software and hardware-connected systems involving control logic, communication protocols, and high-reliability engineering environments.</p>
+          <div class="tag-row">
+            <span class="tag">Embedded C/C++</span>
+            <span class="tag">Protocol Handling</span>
+            <span class="tag">Real-World Systems</span>
+          </div>
+          <div class="project-footer">
+            <span style="color:#d7e5f5;">Deep technical foundation</span>
+            <a class="linkish" href="#contact">View Capability</a>
+          </div>
+        </div>
+        <div class="glass-card project-card">
+          <h3>Modern Leadership Portfolio</h3>
+          <p>Driving delivery beyond code — planning execution, motivating teams, solving blockers, coordinating with leadership, and ensuring outcomes reach the finish line.</p>
+          <div class="tag-row">
+            <span class="tag">Technical Leadership</span>
+            <span class="tag">Program Execution</span>
+            <span class="tag">Cross-Functional Work</span>
+          </div>
+          <div class="project-footer">
+            <span style="color:#d7e5f5;">Builder mindset</span>
+            <a class="linkish" href="#contact">Connect Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Core strengths</h2>
+        </div>
+        <p>
+          A blend of technical capability, product execution, and people leadership — built over years of solving both system and delivery challenges.
+        </p>
+      </div>
+      <div class="glass-card" style="padding:26px;">
+        <div class="skills-wrap">
+          <span class="skill">C++</span>
+          <span class="skill">VC++ / MFC</span>
+          <span class="skill">C#</span>
+          <span class="skill">.NET / .NET Core</span>
+          <span class="skill">Embedded C</span>
+          <span class="skill">Azure</span>
+          <span class="skill">System Design</span>
+          <span class="skill">Architecture Thinking</span>
+          <span class="skill">Project Delivery</span>
+          <span class="skill">Stakeholder Management</span>
+          <span class="skill">Team Leadership</span>
+          <span class="skill">Execution Planning</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="glass-card cta">
+        <div>
+          <h3>Want a technical leader who can also drive execution?</h3>
+          <p>
+            Whether it is building systems, leading teams, modernizing platforms, or bringing structure to delivery, I bring both engineering thinking and ownership mindset to the table.
+          </p>
+        </div>
+        <div class="contact-list">
+          <div class="contact-item">
+            <small>Focus Areas</small>
+            <span>Software Engineering • Embedded Systems • Delivery Leadership • Cloud-Connected Products</span>
+          </div>
+          <div class="contact-item">
+            <small>Availability</small>
+            <span>Open to leadership, technical delivery, and high-impact engineering opportunities</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Let’s build something serious</h2>
+        </div>
+        <p>
+          Use your own details below before publishing. Replace the email, LinkedIn, resume link, and profile image with your actual assets.
+        </p>
+      </div>
+      <div class="grid-2">
+        <div class="glass-card contact-card">
+          <div class="icon">📩</div>
+          <h3>Email</h3>
+          <p>Replace this with your professional email address.</p>
+          <p style="margin-top:14px;"><a class="linkish" href="mailto:sachin221199@hotmail.com">Email Me On</a></p>
+        </div>
+        <div class="glass-card contact-card">
+          <div class="icon">🔗</div>
+          <h3>LinkedIn</h3>
+          <p>Link your updated professional profile here.</p>
+          <p style="margin-top:14px;"><a class="linkish" href="https://www.linkedin.com/in/siddharth-parmar-986a31a8/" target="_blank" rel="noreferrer">Connect with me on LinkedIn</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Siddharth Parmar. Built to feel premium, sharp, and memorable.
+    </div>
+  </footer>
+</body>
+</html>
